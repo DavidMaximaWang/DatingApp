@@ -9,6 +9,7 @@ using Dating.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Dating.API.Controllers
 {
@@ -46,7 +47,6 @@ namespace Dating.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
-
             var userFromRepo = await _repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
             if (userFromRepo == null)
             {
@@ -73,8 +73,8 @@ namespace Dating.API.Controllers
             {
                 token = tokenHandler.WriteToken(token)
             });
-
         }
 
     }
+
 }
