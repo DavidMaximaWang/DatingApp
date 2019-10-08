@@ -10,7 +10,7 @@ import { AltertifyService } from '../_services/altertify.service';
 export class NavComponent implements OnInit {
 
   model: any = {};
-  constructor(private authService: AuthService, private alertify: AltertifyService) { }
+  constructor(public authService: AuthService, private alertify: AltertifyService) { }
 
   ngOnInit() {
   }
@@ -23,8 +23,7 @@ export class NavComponent implements OnInit {
     console.log(this.model);
   }
   loggedIn() {
-    const token = localStorage.getItem('token');
-    return !!token;
+    return this.authService.loggedIn();
   }
   logout() {
     localStorage.removeItem('token');
