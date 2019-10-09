@@ -14,6 +14,6 @@ namespace Dating.API.Dtos
         public string City { get; set; }
         public string Country { get; set; }
         public string PhotoUrl { get; set; }
-        
+
     }
 }
