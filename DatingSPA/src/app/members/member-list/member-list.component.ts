@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../_models/user';
-import { AltertifyService } from '../_services/altertify.service';
-import { UserService } from '../_services/user.service';
+import { User } from '../../_models/user';
+import { AltertifyService } from '../../_services/altertify.service';
+import { UserService } from '../../_services/user.service';
 
 @Component({
   selector: 'app-member-list',
@@ -15,9 +15,10 @@ export class MemberListComponent implements OnInit {
     private alertify: AltertifyService
   ) {}
 
-  ngOnInit() {this.loadUsers();}
+  ngOnInit() {
+    this.loadUsers();
+  }
   loadUsers() {
-    console.log("user loaded!!!");
     this.userService.getUsers().subscribe(
       (users: User[]) => {
         this.users = users;
